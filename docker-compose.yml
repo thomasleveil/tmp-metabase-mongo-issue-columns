@@ -1,6 +1,6 @@
 version: "3.6"
-
 services:
+
   metabase:
     image: metabase/metabase:v0.32.1
     expose:
@@ -11,6 +11,7 @@ services:
     volumes:
       - /metabase-data
 
+
   mongo:
     image: mongo:3.6
     expose:
@@ -20,8 +21,7 @@ services:
     volumes:
       - ./dumps:/dumps
       - ./mongo-initdb.d:/docker-entrypoint-initdb.d:ro
-    healthcheck:
-      test: bash -c "</dev/tcp/127.0.0.1/27017"
+
 
   mongoclient:
     image: mongoclient/mongoclient:latest
