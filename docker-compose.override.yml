@@ -1,0 +1,22 @@
+version: "3.6"
+
+services:
+  metabase:
+    healthcheck:
+      test: bash -c "</dev/tcp/127.0.0.1/3000"
+      interval: 5s
+    labels:
+      traefik.enable: "true"
+      traefik.port: 3000
+
+  mongo:
+    healthcheck:
+      test: bash -c "</dev/tcp/127.0.0.1/27017"
+      interval: 5s
+
+  mongoclient:
+    healthcheck:
+      test: curl --silent --show-error --fail --retry 10 --retry-delay 5 --retry-max-time 30 http://127.0.0.1:3000/healthcheck
+    labels:
+      traefik.enable: "true"
+      traefik.port: 3000

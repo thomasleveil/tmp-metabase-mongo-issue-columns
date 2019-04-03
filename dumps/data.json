@@ -1,0 +1,1 @@
+{"_id":{ "$oid": "5be9854e44429b000ddb94cc" },"status":"GENERATED_ERROR","subArray":[{"status":"foo","bar":"test"}],"subObject":{"status": "bar"}}
